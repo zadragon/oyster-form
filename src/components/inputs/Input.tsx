@@ -1,9 +1,20 @@
-import React from "react";
 import { styled } from "styled-components";
 
-const Input = ({ type, placeholder, name, value, onChange, disabled, maxlength, phonenumindex, width }) => {
+type InputProps = {
+	type: string;
+	placeholder?: string;
+	name: string;
+	value: string;
+	onChange?: Function;
+	disabled?: boolean;
+	maxlength?: number;
+	width?: string;
+};
+
+const Input = ({ type, placeholder, name, value, onChange, disabled, maxlength, width }: InputProps) => {
 	// 타입 넘버고, 값이 있고, 최대 자리수를 넘어가면
-	if (type === "tel" && value && value.length >= maxlength) {
+
+	if (type === "tel" && value && maxlength && value.length >= maxlength) {
 		if (/^\d*$/.test(value)) {
 			value = value.substr(0, maxlength);
 		}
@@ -15,10 +26,9 @@ const Input = ({ type, placeholder, name, value, onChange, disabled, maxlength, 
 				placeholder={placeholder}
 				name={name}
 				value={value && value}
-				disabled={disabled ? disabled : undefined}
-				maxLength={maxlength && maxlength}
-				phonenumindex={phonenumindex && phonenumindex}
-				onChange={(e) => onChange(e)}
+				disabled={disabled}
+				maxLength={maxlength}
+				onChange={onChange && ((e) => onChange(e))}
 				style={{ width: width || "100%" }}
 			/>
 		</>

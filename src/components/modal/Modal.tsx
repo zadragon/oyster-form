@@ -1,8 +1,13 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { styled } from "styled-components";
 import * as C from "../../styles/common";
 
-const Modal = ({ title, children, toggle }) => {
+type ModalProps = {
+	title: string;
+	children: ReactNode;
+	toggle: Function;
+};
+const Modal: React.FC<ModalProps> = ({ title, children, toggle }) => {
 	return (
 		<ModalWrap>
 			<C.HeaderWrap>

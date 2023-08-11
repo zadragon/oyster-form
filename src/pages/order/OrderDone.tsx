@@ -23,8 +23,16 @@ const orderMsg = {
 const OrderDone = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
-	const [state, setState] = useState({});
-	const { title, subTitle, buttonType1, buttonType2, imgUrl } = state;
+	const [state, setState] = useState({ title: "", subTitle: "", buttonType1: "", buttonType2: "", imgUrl: "" });
+
+	type StateProps = {
+		title: string;
+		subTitle: string;
+		buttonType1: string;
+		buttonType2: string;
+		imgUrl: string;
+	};
+	const { title, subTitle, buttonType1, buttonType2, imgUrl }: StateProps = state;
 
 	useEffect(() => {
 		if (location.pathname.includes("/orderDone")) {

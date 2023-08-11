@@ -20,7 +20,11 @@ const Order = () => {
 		requirement: "", // 기타 요청사항
 	});
 
-	const handleComplete = (data) => {
+	type HandleProps = {
+		address: string;
+		zonecode: string;
+	};
+	const handleComplete = (data: HandleProps) => {
 		let address = data.address;
 		let postcode = data.zonecode;
 		setPayload({
@@ -31,16 +35,16 @@ const Order = () => {
 		setModalOpen(false);
 	};
 
-	const onChangeHandler = (e) => {
-		const { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
+	const onChangeHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		const { value, name } = e.target as HTMLInputElement; // 우선 e.target 에서 name 과 value 를 추출
 		setPayload({
 			...payload, // 기존의 input 객체를 복사한 뒤
 			[name]: value, // name 키를 가진 값을 value 로 설정
 		});
 	};
 
-	const onChangePhoneNumHandle = (e) => {
-		const { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
+	const onChangePhoneNumHandle = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		const { value, name } = e.target as HTMLInputElement; // 우선 e.target 에서 name 과 value 를 추출
 		//숫자만 입력
 		if (/^\d*$/.test(value)) {
 			const newPhoneNumbers = [...phoneNumbers];
@@ -53,7 +57,6 @@ const Order = () => {
 				phoneNumber: newPhoneNumbers.join(""), // name 키를 가진 값을 value 로 설정
 			});
 		}
-		// console.log(value);
 	};
 
 	useEffect(() => {
@@ -99,33 +102,9 @@ const Order = () => {
 			<S.List>
 				<h2>연락처</h2>
 				<div className="row justify-between">
-					<Input
-						type="tel"
-						name="num0"
-						value={phoneNumbers[0]}
-						onChange={onChangePhoneNumHandle}
-						maxlength="3"
-						phonenumindex="0"
-						width="30%"
-					/>
-					<Input
-						type="tel"
-						name="num1"
-						value={phoneNumbers[1]}
-						onChange={onChangePhoneNumHandle}
-						maxlength="4"
-						phonenumindex="1"
-						width="30%"
-					/>
-					<Input
-						type="tel"
-						name="num2"
-						value={phoneNumbers[2]}
-						onChange={onChangePhoneNumHandle}
-						maxlength="4"
-						phonenumindex="2"
-						width="30%"
-					/>
+					<Input type="tel" name="num0" value={phoneNumbers[0]} onChange={onChangePhoneNumHandle} maxlength={3} width="30%" />
+					<Input type="tel" name="num1" value={phoneNumbers[1]} onChange={onChangePhoneNumHandle} maxlength={4} width="30%" />
+					<Input type="tel" name="num2" value={phoneNumbers[2]} onChange={onChangePhoneNumHandle} maxlength={4} width="30%" />
 				</div>
 			</S.List>
 			<S.List>
@@ -152,7 +131,7 @@ const Order = () => {
 			</S.List>
 
 			{/* <BtnSubmit className={submitActive ? "active" : null}>2000 포인트로 구매하기</BtnSubmit> */}
-			<C.SubmitButton onClick={onSubmitOrder} className={submitActive ? "active" : null}>
+			<C.SubmitButton onClick={onSubmitOrder} className={submitActive ? "active" : ""}>
 				2000 포인트로 구매하기
 			</C.SubmitButton>
 

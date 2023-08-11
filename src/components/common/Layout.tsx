@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import * as C from "../../styles/common";
 
 const Layout = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
-	const [state, setState] = useState({});
+	const [state, setState] = useState({ title: "" });
 
 	useEffect(() => {
 		if (location.pathname.includes("/orderDone")) {
