@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { styled } from "styled-components";
-import * as C from "../../styles/common";
+import * as C from "@/styles/common";
 
 type ModalProps = {
 	title: string;

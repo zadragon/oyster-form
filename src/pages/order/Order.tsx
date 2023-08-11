@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { OrderApi } from "../../shared/api";
-import * as C from "../../styles/common.js";
-import * as S from "../../styles/pages/order/order.js";
+import { OrderApi } from "@/shared/api";
+import * as C from "@/styles/common";
+import * as S from "@/styles/pages/order/order";
 import DaumPostcode from "react-daum-postcode";
-import Modal from "../../components/modal/Modal";
-import Input from "../../components/inputs/Input";
+import Modal from "@/components/modal/Modal";
+import Input from "@/components/inputs/Input";
 import { useNavigate } from "react-router-dom";
 
 const Order = () => {

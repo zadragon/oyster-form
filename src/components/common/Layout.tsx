@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import * as C from "../../styles/common";
+import * as C from "@/styles/common";
 
 const Layout = () => {
 	const navigate = useNavigate();

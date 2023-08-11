@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "../components/common/Layout";
-import Order from "../pages/order/Order";
-import OrderDone from "../pages/order/OrderDone";
+import Layout from "@/components/common/Layout";
+import Order from "@/pages/order/Order";
+import OrderDone from "@/pages/order/OrderDone";
 
 const Router = () => {
 	return (
